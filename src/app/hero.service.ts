@@ -1,9 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { HEROES } from './mock-heroes';
-import { Hero } from './heroes/hero';
-import { catchError, Observable, of, tap } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { HEROES } from './mock-heroes';
+import { Hero, HeroResponse } from './heroes/hero';
+import { catchError, map, Observable, of, tap } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { md5 } from 'js-md5';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,11 @@ export class HeroService {
     private messageService: MessageService,
   ) {}
 
-  private heroesUrl = 'api/heroes';
+  private publicKey = 'bf3884b86b57e6b573a568fb9aac2ef1';
+  private privateKey = 'eda3675fde68637a016004f473c0678df0d945e1';
+  private ts = '1';
+  private hash = md5(this.ts + this.privateKey + this.publicKey);
+  private heroesUrl = 'https://gateway.marvel.com/v1/public/characters?orderBy=name';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -31,11 +36,11 @@ export class HeroService {
     };
   }
 
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+  getHeroes(): Observable<HeroResponse> {
+    const params = new HttpParams().set("ts", this.ts).set("apikey", this.publicKey).set("hash", this.hash)
+    return this.http.get<HeroResponse>(this.heroesUrl, {params})
     .pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError<Hero[]>('getHeroes', []))
+      catchError(this.handleError<HeroResponse>('getHeroes', {}))
     );
   }
 

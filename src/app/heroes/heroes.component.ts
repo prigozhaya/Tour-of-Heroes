@@ -16,7 +16,7 @@ export class HeroesComponent {
   heroes: Hero[] = [];
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+    this.heroService.getHeroes().subscribe((heroes) => (this.heroes));
   }
 
   ngOnInit(): void {

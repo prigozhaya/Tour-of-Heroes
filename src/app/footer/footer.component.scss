@@ -1,0 +1,17 @@
+.footer-wrapper {
+  width: 100%;
+  background-image: url("../../../assets/Back-ground-footer.png");
+  height: 213px;
+  background-repeat: repeat;
+  display: flex;
+  align-items: center;
+}
+
+.footer-text {
+  font-weight: 500;
+  font-size: 20px;
+  color: #000;
+  font-family: "Kufam", sans-serif;
+  -webkit-text-stroke: 4px #de754c;
+  paint-order: stroke fill;
+}

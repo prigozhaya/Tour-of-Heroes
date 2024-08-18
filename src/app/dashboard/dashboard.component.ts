@@ -10,6 +10,7 @@ import { first } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit{
   heroes: Hero[] = [];
+  loading = false;
 
   constructor(private heroService: HeroService) {}
   ngOnInit(): void {
@@ -17,8 +18,10 @@ export class DashboardComponent implements OnInit{
   }
 
   getHeroes(): void {
+    this.loading = true;
       this.heroService.getHeroes().subscribe((heroes) => {
         this.heroes = heroes?.data?.results || [];
+        this.loading = false;
       });
   }
 }

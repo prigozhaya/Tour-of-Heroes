@@ -27,7 +27,7 @@ export class HeroDetailComponent {
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    this.messageService.add({text:`HeroService: fetched hero id=${id}`});
     this.heroService.getHero(id).subscribe(hero => this.hero = hero)
   }
   goBack(): void {

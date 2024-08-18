@@ -1,46 +1,24 @@
-h2 {
+.dashboard-header {
   text-align: center;
+  -webkit-text-stroke: 3px #000;
+  text-shadow: 3px 3px 0 #000;
+  color: #de754c;
+  font-size: 35px;
+  font-family: "Lalezar", system-ui;
+  paint-order: stroke fill;
 }
 
-.heroes-menu {
-  padding: 0;
-  margin: auto;
-  max-width: 1000px;
-
-  /* flexbox */
+.heroes-list{
+  border: 5px solid #000;
+  width: 720px;
+  min-height: 750px;
+  box-shadow: 10px 10px 0 0 #000;
+  background: #fff;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-
-a {
-  background-color: #3f525c;
-  border-radius: 2px;
-  padding: 1rem;
-  font-size: 1.2rem;
-  text-decoration: none;
-  display: inline-block;
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  min-width: 70px;
-  margin: 0.5rem auto;
-  box-sizing: border-box;
-
-  /* flexbox */
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-
-  &:hover {
-    background-color: #000;
-  }
-
-  @media (min-width: 600px) {
-    width: 18%;
-    box-sizing: content-box;
-  }
+  gap: 10px;
+  row-gap: 30px;
+  justify-content: space-between;
+  padding: 50px 32px 15px 32px;
+  margin-bottom: 70px;
 }

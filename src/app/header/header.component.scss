@@ -1,0 +1,35 @@
+.header-wrapper {
+  width: 100%;
+  background: linear-gradient(180deg, #9cb6ad 0%, #206a92 100%);
+  margin-bottom: 40px;
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    font-family: "Lalezar", system-ui;
+
+    h1 {
+      font-size: 35px;
+      color: #e9b446;
+      -webkit-text-stroke: 3px #000;
+      text-shadow: 3px 3px 0 #000;
+      paint-order: stroke fill;
+    }
+
+    .navigation-links {
+      display: flex;
+      justify-content: space-between;
+      min-width: 200px;
+
+      a {
+        -webkit-text-stroke: 1px #000;
+        text-shadow: 2px 2px 0 #000;
+        font-size: 25px;
+        text-decoration: underline;
+        color: #de754c;
+      }
+    }
+  }
+}

@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@angular/core';
-// import { HEROES } from './mock-heroes';
 import { Hero, HeroResponse } from './heroes/hero';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -19,33 +18,35 @@ export class HeroService {
   private privateKey = 'eda3675fde68637a016004f473c0678df0d945e1';
   private ts = '1';
   private hash = md5(this.ts + this.privateKey + this.publicKey);
-  private heroesUrl = 'https://gateway.marvel.com/v1/public/characters?orderBy=name';
+  private heroesUrl = 'https://gateway.marvel.com/v1/public/characters';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+  private log(message: string, error?: boolean) {
+    this.messageService.add({text: `HeroService: ${message}`, error});
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failed: ${error.message}`, true);
 
       return of(result as T);
     };
   }
 
   getHeroes(): Observable<HeroResponse> {
-    const params = new HttpParams().set("ts", this.ts).set("apikey", this.publicKey).set("hash", this.hash)
+    const params = new HttpParams().set("limit", 6).set("ts", this.ts).set("apikey", this.publicKey).set("hash", this.hash)
     return this.http.get<HeroResponse>(this.heroesUrl, {params})
     .pipe(
+      tap(_ => this.log(`fetched heroes`)),
       catchError(this.handleError<HeroResponse>('getHeroes', {}))
     );
   }
 
   getHero(id: number): Observable<Hero> {
-    return this.http.get<Hero>(`${this.heroesUrl}/${id}`).pipe(tap(_ => this.log(`fetched hero id=${id}`)), catchError(this.handleError<Hero>(`getHero id=${id}`)))
+    const params = new HttpParams().set("ts", this.ts).set("apikey", this.publicKey).set("hash", this.hash)
+    return this.http.get<Hero>(`${this.heroesUrl}/${id}`,{params}).pipe(tap(_ => this.log(`fetched hero id=${id}`)), catchError(this.handleError<Hero>(`getHero id=${id}`)))
   }
 
   updateHero(hero: Hero): Observable<any> {
@@ -78,7 +79,7 @@ export class HeroService {
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
       tap(x => x.length ?
          this.log(`found heroes matching "${term}"`) :
-         this.log(`no heroes matching "${term}"`)),
+         this.log(`no heroes matching "${term}"`, true)),
       catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }

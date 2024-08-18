@@ -1,0 +1,19 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px;
+  background-image: url("../../../assets/search-containerpng.png");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .search-input{
+    display: block;
+    border: 1px solid black;
+    height: 30px;
+    border-radius: 32px;
+    min-width: 220px;
+    padding: 2px 20px 0;
+    font-family: "Kufam", sans-serif;
+  }
+}

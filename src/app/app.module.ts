@@ -12,6 +12,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 // import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { HeroCardComponent } from './hero-card/hero-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HeaderComponent,
+    HeroCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

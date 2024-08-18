@@ -1,20 +1,27 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}
 body {
-  margin: 2em;
+  background-color: #E9DDC7;
+  background-image: url('../assets/Back-ground-dots.png');
+  background-repeat: repeat-x;
+  background-position-y: 100px;
+  margin: 0;
 }
-body, input[type="text"], button {
+
+h1,h2,h3{
+  margin: 0;
+}
+
+body,
+input[type="text"],
+button {
   color: #333;
   font-family: Cambria, Georgia, serif;
 }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 button {
   background-color: #eee;
   border: none;
@@ -37,10 +44,4 @@ button {
     color: #aaa;
     cursor: auto;
   }
-
-}
-
-
-* {
-  font-family: Arial, Helvetica, sans-serif;
 }

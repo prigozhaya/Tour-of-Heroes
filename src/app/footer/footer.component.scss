@@ -1,3 +1,5 @@
+@use "../../colors.scss";
+
 .footer-wrapper {
   width: 100%;
   background-image: url("../../../assets/Back-ground-footer.png");
@@ -10,8 +12,8 @@
 .footer-text {
   font-weight: 500;
   font-size: 20px;
-  color: #000;
+  color: colors.$black;
   font-family: "Kufam", sans-serif;
-  -webkit-text-stroke: 4px #de754c;
+  -webkit-text-stroke: 4px colors.$red;
   paint-order: stroke fill;
 }

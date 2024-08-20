@@ -1,4 +1,4 @@
 export interface Messages {
-text: string;
-error?: boolean;
+  text: string;
+  error?: boolean;
 }

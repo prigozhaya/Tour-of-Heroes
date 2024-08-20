@@ -1,19 +1,23 @@
+@use "./colors.scss";
+
 body {
-  background-color: #E9DDC7;
-  background-image: url('../assets/Back-ground-dots.png');
+  background-color: #e9ddc7;
+  background-image: url("../assets/Back-ground-dots.png");
   background-repeat: repeat-x;
   background-position-y: 100px;
   margin: 0;
 }
 
-h1,h2,h3{
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
 body,
 input[type="text"],
 button {
-  color: #333;
+  color: colors.$black;
   font-family: Cambria, Georgia, serif;
 }
 
@@ -44,4 +48,29 @@ button {
     color: #aaa;
     cursor: auto;
   }
+}
+
+.heroes-header {
+  text-align: center;
+  -webkit-text-stroke: 3px colors.$black;
+  text-shadow: 3px 3px 0 colors.$black;
+  color: colors.$red;
+  font-size: 35px;
+  font-family: "Lalezar", system-ui;
+  paint-order: stroke fill;
+}
+
+.heroes-list {
+  border: 5px solid colors.$black;
+  width: 720px;
+  min-height: 500px;
+  box-shadow: 10px 10px 0 0 colors.$black;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  row-gap: 30px;
+  justify-content: space-between;
+  padding: 50px 32px 15px 32px;
+  margin-bottom: 70px;
 }

@@ -1,3 +1,5 @@
+@use "../../colors.scss";
+
 .search-container {
   display: flex;
   justify-content: center;
@@ -9,7 +11,7 @@
 
   .search-input{
     display: block;
-    border: 1px solid black;
+    border: 1px solid colors.$black;
     height: 30px;
     border-radius: 32px;
     min-width: 220px;

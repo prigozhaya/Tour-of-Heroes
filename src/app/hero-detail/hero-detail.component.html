@@ -1,12 +1,31 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div>id: {{hero.id}}</div>
-  <div>
-    <label>Hero name:
-      <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
-    </label>
-    <button type="button" (click)="save()">save</button>
-  </div>
-  <button type="button" (click)="goBack()">Go back</button>
+<h2 class="heroes-header">Hero Details</h2>
+<div class="heroes-list container">
+  <ng-container *ngIf="!loading; else loadingTemplate">
+    <div class="hero-info-container" *ngIf="hero">
+      <div class="info-img-container">
+        <img
+          class="detail-img"
+          src="{{ hero.thumbnail?.path }}.{{ hero.thumbnail?.extension }}"
+          alt="hero: {{ hero.name }}"
+        />
+      </div>
+      <div class="hero-info">
+        <h3 class="info-text-name">{{ hero.name | uppercase }}</h3>
+        <p><span class="info-text-text">ID:</span> {{ hero.id }}</p>
+        <p>
+          <span class="info-text-text">Description:</span>
+          {{ hero.description }}
+        </p>
+        <p><span class="info-text-text">Appearance:</span></p>
+        <ul>
+          <li *ngFor="let item of hero.comics?.items">{{ item.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<ng-template #loadingTemplate>Loading...</ng-template>
 
+<div class="container">
+  <button type="button" (click)="goBack()">Go back</button>
 </div>

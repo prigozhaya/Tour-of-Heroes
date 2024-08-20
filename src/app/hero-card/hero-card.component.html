@@ -1,11 +1,13 @@
+<div class="card-container" *ngIf="hero">
+  <a routerLink="/detail/{{ hero.id }}" class="card-link">
+    <img
+      class="card-img"
+      src="{{ hero.thumbnail?.path }}.{{ hero.thumbnail?.extension }}"
+      alt="hero: {{ hero.name }}"
+    />
 
-  <div class="card-container"  *ngIf="hero">
-    <a routerLink="/detail/{{ hero.id }}" class="card-link">
-  <img class="card-img" src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="hero: {{hero.name}}">
-  
-
-  <div class="card-name">
-    {{ hero.name }}
-  </div>
-</a>
+    <div class="card-name">
+      {{ hero.name }}
+    </div>
+  </a>
 </div>

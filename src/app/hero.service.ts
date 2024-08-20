@@ -44,9 +44,9 @@ export class HeroService {
     );
   }
 
-  getHero(id: number): Observable<Hero> {
+  getHero(id: number): Observable<HeroResponse> {
     const params = new HttpParams().set("ts", this.ts).set("apikey", this.publicKey).set("hash", this.hash)
-    return this.http.get<Hero>(`${this.heroesUrl}/${id}`,{params}).pipe(tap(_ => this.log(`fetched hero id=${id}`)), catchError(this.handleError<Hero>(`getHero id=${id}`)))
+    return this.http.get<HeroResponse>(`${this.heroesUrl}/${id}`,{params}).pipe(tap(_ => this.log(`fetched hero id=${id}`)),tap(heroes=> console.log(heroes)),catchError(this.handleError<HeroResponse>(`getHero id=${id}`)))
   }
 
   updateHero(hero: Hero): Observable<any> {

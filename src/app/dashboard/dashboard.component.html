@@ -1,8 +1,8 @@
 <app-hero-search></app-hero-search>
-<h2 class="dashboard-header">Heroes</h2>
+<h2 class="heroes-header">Heroes</h2>
 <div class="heroes-list container">
   <ng-container *ngIf="!loading; else loadingTemplate">
-  <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
+    <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
   </ng-container>
   <ng-template #loadingTemplate>Loading...</ng-template>
 </div>

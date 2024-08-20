@@ -1,18 +1,20 @@
 <div class="messages-block container">
-<div class="message-header-container">
-  <span class="messages-span"></span>
-<h2 class="messages-header">Messages</h2>
-  <span class="messages-span"></span>
-</div>
-
-<div class="container messages-box">
-<div class="messages-container" *ngIf="messageService.messages.length">
-  <button type="button" class="clear" (click)="messageService.clear()">Clear</button>
-
-  <div *ngFor=" let message of messageService.messages">
-   <p  class="message-text" [ngClass]="{error:message.error}"> {{message.text}}</p>
+  <div class="message-header-container">
+    <span class="messages-span"></span>
+    <h2 class="messages-header">Messages</h2>
+    <span class="messages-container-line"></span>
   </div>
-</div>
-</div>
-<span class="messages-span"></span>
+
+  <div class="container messages-box">
+    <div class="messages-container" *ngIf="messageService.messages.length">
+      <button type="button" (click)="messageService.clear()">Clear</button>
+
+      <div *ngFor="let message of messageService.messages">
+        <p class="message-text" [ngClass]="{ error: message.error }">
+          {{ message.text }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <span class="messages-container-line"></span>
 </div>

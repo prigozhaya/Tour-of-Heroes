@@ -1,25 +1,38 @@
-label {
-  color: #435960;
-  font-weight: bold;
-}
-input {
-  font-size: 1em;
-  padding: .5rem;
-}
-button {
-  margin-top: 20px;
-  background-color: #eee;
-  padding: 1rem;
-  border-radius: 4px;
-  font-size: 1rem;
+@use "../../colors.scss";
 
-  &:hover {
-    background-color: #cfd8dc;
+.hero-info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .info-img-container {
+    width: 340px;
+    height: 230px;
+    border: 3px solid colors.$black;
+
+    .detail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
-  &:disabled {
-    background-color: #eee;
-    color: #ccc;
-    cursor: auto;
+  .hero-info {
+    background-color: colors.$yellow;
+    height: fit-content;
+    padding: 15px;
+    max-width: 320px;
+    border: 3px solid colors.$black;
+    font-family: "Kufam", sans-serif;
+
+    .info-text-text {
+      font-weight: 700;
+    }
+
+    .info-text-name {
+      color: colors.$red;
+      -webkit-text-stroke: 3px colors.$black;
+      paint-order: stroke fill;
+    }
   }
 }

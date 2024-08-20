@@ -1,3 +1,5 @@
+@use "../../colors.scss";
+
 .header-wrapper {
   width: 100%;
   background: linear-gradient(180deg, #9cb6ad 0%, #206a92 100%);
@@ -12,9 +14,9 @@
 
     h1 {
       font-size: 35px;
-      color: #e9b446;
-      -webkit-text-stroke: 3px #000;
-      text-shadow: 3px 3px 0 #000;
+      color: colors.$yellow;
+      -webkit-text-stroke: 3px colors.$black;
+      text-shadow: 3px 3px 0 colors.$black;
       paint-order: stroke fill;
     }
 
@@ -24,11 +26,11 @@
       min-width: 200px;
 
       a {
-        -webkit-text-stroke: 1px #000;
-        text-shadow: 2px 2px 0 #000;
+        -webkit-text-stroke: 1px colors.$black;
+        text-shadow: 2px 2px 0 colors.$black;
         font-size: 25px;
         text-decoration: underline;
-        color: #de754c;
+        color: colors.$red;
       }
     }
   }

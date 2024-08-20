@@ -1,12 +1,5 @@
 <div id="search-component">
   <div class="search-container">
-  <input #searchBox id="search-box" class="search-input" (input)="search(searchBox.value)"  placeholder="Search hero"/>
+  <input id="search-box" class="search-input" [(ngModel)]="searchValue"  (keyup.enter)="setSearchValue()" placeholder="Search hero"/>
   </div>
-  <ul class="search-result">
-    <li *ngFor="let hero of heroes$ | async" >
-      <a routerLink="/detail/{{hero.id}}">
-        {{hero.name}}
-      </a>
-    </li>
-  </ul>
 </div>

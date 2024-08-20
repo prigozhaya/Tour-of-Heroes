@@ -1,5 +1,5 @@
 <h2 class="heroes-header">Hero Details</h2>
-<div class="heroes-list container">
+<div class="list-container container">
   <ng-container *ngIf="!loading; else loadingTemplate">
     <div class="hero-info-container" *ngIf="hero">
       <div class="info-img-container">
@@ -9,7 +9,7 @@
           alt="hero: {{ hero.name }}"
         />
       </div>
-      <div class="hero-info">
+      <div class="info-container">
         <h3 class="info-text-name">{{ hero.name | uppercase }}</h3>
         <p><span class="info-text-text">ID:</span> {{ hero.id }}</p>
         <p>
@@ -23,8 +23,8 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #loadingTemplate>Loading...</ng-template>
 </div>
-<ng-template #loadingTemplate>Loading...</ng-template>
 
 <div class="container">
   <button type="button" (click)="goBack()">Go back</button>

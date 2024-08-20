@@ -1,6 +1,7 @@
 import { HeroService } from './../hero.service';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../heroes/hero';
+import { map, Observable, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,9 +19,28 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     this.loading = true;
-    this.heroService.getHeroes().subscribe((heroes) => {
-      this.heroes = heroes?.data?.results || [];
-      this.loading = false;
-    });
+    this.heroService
+      .getHeroes()
+      .pipe(
+        map((heroes) => heroes?.data?.results || [])
+      )
+      .subscribe((heroes) => {
+        this.heroes = heroes;
+        this.loading = false;
+      });
+  }
+
+  searchHeroes(searchValue: string): void {
+    this.loading = true;
+    this.heroService
+      .searchHeroes(searchValue)
+      .pipe(
+        map((heroes) => heroes?.data?.results || []),
+        tap((_) => (this.loading = false))
+      )
+      .subscribe((heroes) => {
+        this.heroes = heroes;
+        this.loading = false;
+      });
   }
 }

@@ -16,6 +16,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     HeroCardComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, NgFor, NgIf],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],

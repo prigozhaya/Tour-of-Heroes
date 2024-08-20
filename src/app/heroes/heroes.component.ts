@@ -8,7 +8,7 @@ import { Hero } from './hero';
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.scss',
 })
-export class HeroesComponent {
+export class HeroesComponent implements OnInit {
   constructor(
     private heroService: HeroService,
     private messageService: MessageService

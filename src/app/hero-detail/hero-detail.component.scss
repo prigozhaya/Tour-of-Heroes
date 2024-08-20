@@ -17,14 +17,6 @@
     }
   }
 
-  .hero-info {
-    background-color: colors.$yellow;
-    height: fit-content;
-    padding: 15px;
-    max-width: 320px;
-    border: 3px solid colors.$black;
-    font-family: "Kufam", sans-serif;
-
     .info-text-text {
       font-weight: 700;
     }
@@ -34,5 +26,5 @@
       -webkit-text-stroke: 3px colors.$black;
       paint-order: stroke fill;
     }
-  }
+  
 }

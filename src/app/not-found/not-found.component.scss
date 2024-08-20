@@ -1,0 +1,13 @@
+@use "../../colors.scss";
+
+.not-found-container{
+  max-width: 370px;
+  max-height: auto;
+  justify-content: center;
+  padding-bottom: 50px;
+
+  .not-found-img{
+    max-width: 350px;
+  border: 3px solid colors.$black;
+  }
+}

@@ -72,15 +72,17 @@ export class HeroService {
     );
   }
 
-  searchHeroes(term: string): Observable<Hero[]> {
+  searchHeroes(term: string): Observable<HeroResponse> {
     if (!term.trim()) {
-      return of([]);
+      return of({});
     }
-    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-      tap(x => x.length ?
+
+    const params = new HttpParams().set("nameStartsWith", term).set("ts", this.ts).set("apikey", this.publicKey).set("hash", this.hash)
+    return this.http.get<HeroResponse>(this.heroesUrl,{params}).pipe(
+      tap(x => x ?
          this.log(`found heroes matching "${term}"`) :
          this.log(`no heroes matching "${term}"`, true)),
-      catchError(this.handleError<Hero[]>('searchHeroes', []))
+      catchError(this.handleError<HeroResponse>('searchHeroes'))
     );
   }
 }

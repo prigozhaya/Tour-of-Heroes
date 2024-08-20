@@ -1,6 +1,6 @@
-<app-hero-search></app-hero-search>
+<app-hero-search (onEnter)="searchHeroes($event)"></app-hero-search>
 <h2 class="heroes-header">Heroes</h2>
-<div class="heroes-list container">
+<div class="list-container container">
   <ng-container *ngIf="!loading; else loadingTemplate">
     <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
   </ng-container>

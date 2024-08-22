@@ -4,7 +4,9 @@
   <ng-container *ngIf="!loading; else loadingTemplate">
     <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
   </ng-container>
-  <ng-template #loadingTemplate>Loading...</ng-template>
+  <ng-template #loadingTemplate 
+    ><app-spinner class="loading-spinner"></app-spinner
+  ></ng-template>
   <div class="list-page" [ngClass]="{ loading: loading }">{{ page }}</div>
 </div>
 <app-pagination

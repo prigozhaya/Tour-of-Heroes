@@ -5,11 +5,12 @@
   justify-content: center;
   align-items: center;
   min-height: 110px;
+  margin-bottom: 50px;
   background-image: url("../../../assets/search-containerpng.png");
   background-repeat: no-repeat;
   background-position: center;
 
-  .search-input{
+  .search-input {
     display: block;
     border: 1px solid colors.$black;
     height: 30px;

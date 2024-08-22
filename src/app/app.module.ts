@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HeroCardComponent,
     FooterComponent,
     NotFoundComponent,
+    PaginationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, NgFor, NgIf],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],

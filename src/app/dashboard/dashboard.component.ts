@@ -11,17 +11,50 @@ import { map, Observable, of, tap } from 'rxjs';
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
   loading = false;
+  page = 1;
+  maxPage = 1;
+  searchValue = '';
 
   constructor(private heroService: HeroService) {}
   ngOnInit(): void {
     this.getHeroes();
   }
 
+  setPage(step: number): void {
+    this.page += step;
+    if (!this.searchValue) {
+      this.getHeroes();
+    } else {
+      this.searchHeroes();
+    }
+  }
+
+  setSearchValue(searchValue: string): void {
+    if (this.searchValue === searchValue) {
+      return;
+    } else {
+      this.page = 1;
+      this.searchValue = searchValue;
+    }
+
+    if (!this.searchValue) {
+      this.getHeroes();
+    } else {
+      this.searchHeroes();
+    }
+  }
+
   getHeroes(): void {
     this.loading = true;
     this.heroService
-      .getHeroes()
+      .getHeroes((this.page - 1) * 6)
       .pipe(
+        tap(
+          (response) =>
+            (this.maxPage = response.data?.total
+              ? Math.ceil(response.data?.total / 6)
+              : 1)
+        ),
         map((heroes) => heroes?.data?.results || [])
       )
       .subscribe((heroes) => {
@@ -30,13 +63,18 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  searchHeroes(searchValue: string): void {
+  searchHeroes(): void {
     this.loading = true;
     this.heroService
-      .searchHeroes(searchValue)
+      .searchHeroes(this.searchValue, (this.page - 1) * 6)
       .pipe(
-        map((heroes) => heroes?.data?.results || []),
-        tap((_) => (this.loading = false))
+        tap(
+          (response) =>
+            (this.maxPage = response.data?.total
+              ? Math.ceil(response.data?.total / 6)
+              : 1)
+        ),
+        map((heroes) => heroes?.data?.results || [])
       )
       .subscribe((heroes) => {
         this.heroes = heroes;

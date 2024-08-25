@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Hero } from '../heroes/hero';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Hero } from '../favorites/hero';
 
 @Component({
   selector: 'app-hero-card',
@@ -7,5 +7,17 @@ import { Hero } from '../heroes/hero';
   styleUrl: './hero-card.component.scss',
 })
 export class HeroCardComponent {
-  @Input() hero: Hero | undefined;
+  @Input() hero: Hero = {};
+  @Output() setFavorite = new EventEmitter<Hero>();
+  @Output() removeFavorite = new EventEmitter<number>();
+
+  toggleFavorite(): void {
+    if (this.hero?.favorite) {
+      this.hero.favorite = false;
+      this.removeFavorite.emit(this.hero.id);
+    } else {
+      this.hero.favorite = true;
+      this.setFavorite.emit(this.hero);
+    }
+  }
 }

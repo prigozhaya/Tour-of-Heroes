@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Hero, HeroResponse } from './heroes/hero';
+import { Hero, HeroResponse } from './favorites/hero';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MessageService } from './message.service';
@@ -19,6 +19,7 @@ export class HeroService {
   private ts = '1';
   private hash = md5(this.ts + this.privateKey + this.publicKey);
   private heroesUrl = 'https://gateway.marvel.com/v1/public/characters';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -73,7 +74,6 @@ export class HeroService {
       .get<HeroResponse>(`${this.heroesUrl}/${id}`, { params })
       .pipe(
         tap((_) => this.log(`fetched hero id=${id}`)),
-        tap((heroes) => console.log(heroes)),
         catchError(this.handleError<HeroResponse>(`getHero id=${id}`))
       );
   }

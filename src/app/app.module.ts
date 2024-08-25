@@ -5,7 +5,7 @@ import {
 } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -19,11 +19,12 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { FavoriteCardComponent } from './favorite-card/favorite-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
+    FavoritesComponent,
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
@@ -34,6 +35,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NotFoundComponent,
     PaginationComponent,
     SpinnerComponent,
+    FavoriteCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, NgFor, NgIf],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],

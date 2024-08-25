@@ -1,11 +1,27 @@
 @use "../../colors.scss";
 
 .card-container {
-  width: 350px;
+  width: 345px;
   height: 230px;
   border: 3px solid colors.$black;
   position: relative;
   cursor: pointer;
+
+  .favorite {
+    width: fit-content;
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+    transition: all 1.5s;
+
+    &.active {
+      & path {
+        fill: colors.$yellow;
+        stroke: colors.$yellow;
+      }
+    }
+  }
 
   .card-link {
     display: block;

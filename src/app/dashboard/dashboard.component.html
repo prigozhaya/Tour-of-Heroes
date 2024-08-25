@@ -2,9 +2,14 @@
 <h2 class="heroes-header">Heroes</h2>
 <div class="list-container container">
   <ng-container *ngIf="!loading; else loadingTemplate">
-    <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
+    <app-hero-card
+      *ngFor="let hero of heroes"
+      [hero]="hero"
+      (setFavorite)="setFavorite($event)"
+      (removeFavorite)="removeFavorite($event)"
+    ></app-hero-card>
   </ng-container>
-  <ng-template #loadingTemplate 
+  <ng-template #loadingTemplate
     ><app-spinner class="loading-spinner"></app-spinner
   ></ng-template>
   <div class="list-page" [ngClass]="{ loading: loading }">{{ page }}</div>

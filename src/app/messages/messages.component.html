@@ -5,12 +5,16 @@
     <span class="messages-container-line"></span>
   </div>
 
-  <div class="container messages-box">
+  <div class="container messages">
     <div class="messages-container" *ngIf="messageService.messages.length">
       <button type="button" (click)="messageService.clear()">Clear</button>
 
-      <div *ngFor="let message of messageService.messages">
-        <p class="message-text" [ngClass]="{ error: message.error }">
+      <div class="messages-box">
+        <p
+          class="message-text"
+          *ngFor="let message of messageService.messages"
+          [ngClass]="{ error: message.error }"
+        >
           {{ message.text }}
         </p>
       </div>

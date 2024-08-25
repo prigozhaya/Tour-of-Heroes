@@ -10,7 +10,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+p {
   margin: 0;
 }
 
@@ -21,7 +22,7 @@ h3 {
 
 button {
   display: flex;
-  padding: 10px 30px;
+  padding: 10px 20px;
   text-decoration: none;
   font-family: "Kufam", sans-serif;
   font-size: 20px;
@@ -30,7 +31,7 @@ button {
   transition: 1s;
   box-shadow: 3px 3px 0 colors.$black;
   cursor: pointer;
-  
+
   &:focus {
     outline: none;
   }
@@ -67,6 +68,9 @@ button {
 }
 
 .info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background-color: colors.$yellow;
   height: fit-content;
   padding: 15px;
@@ -75,7 +79,16 @@ button {
   font-family: "Kufam", sans-serif;
 }
 
-
-.loading-spinner{
+.loading-spinner {
   width: 100%;
+}
+
+.info-text-text {
+  font-weight: 700;
+}
+
+.info-text-name {
+  color: colors.$red;
+  -webkit-text-stroke: 3px colors.$black;
+  paint-order: stroke fill;
 }

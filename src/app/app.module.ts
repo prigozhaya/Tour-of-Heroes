@@ -1,25 +1,25 @@
+import { NgFor, NgIf } from '@angular/common';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   BrowserModule,
   provideClientHydration,
 } from '@angular/platform-browser';
+import { FavoriteCardComponent } from '../entities/hero/components/favorite-card/favorite-card.component';
+import { HeroCardComponent } from '../entities/hero/components/hero-card/hero-card.component';
+import { HeroSearchComponent } from '../features/hero-search/hero-search.component';
+import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { FavoritesComponent } from '../pages/favorites/favorites.component';
+import { HeroDetailComponent } from '../pages/hero-detail/hero-detail.component';
+import { NotFoundComponent } from '../pages/not-found/not-found.component';
+import { PaginationComponent } from '../shared/components/pagination/pagination.component';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
+import { FooterComponent } from '../widgets/footer/footer.component';
+import { HeaderComponent } from '../widgets/header/header.component';
+import { MessagesComponent } from '../widgets/messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { HeroCardComponent } from './hero-card/hero-card.component';
-import { FooterComponent } from './footer/footer.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { FavoriteCardComponent } from './favorite-card/favorite-card.component';
 
 @NgModule({
   declarations: [
@@ -41,4 +41,4 @@ import { FavoriteCardComponent } from './favorite-card/favorite-card.component';
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

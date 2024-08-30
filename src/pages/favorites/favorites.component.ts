@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../entities/hero/model/hero';
 import { FavoritesService } from '../../entities/hero/services/favorites-service/favorites.service';
+import { Hero } from '../../shared/model/hero';
 
 @Component({
   selector: 'app-favorites',
@@ -8,17 +8,19 @@ import { FavoritesService } from '../../entities/hero/services/favorites-service
   styleUrl: './favorites.component.scss',
 })
 export class FavoritesComponent implements OnInit {
+
+  public favorites: Hero[] = [];
+  public loading = false;
+
   constructor(
     private favoritesService: FavoritesService,
   ) { }
-  favorites: Hero[] = [];
-  loading = false;
 
   ngOnInit(): void {
     this.favorites = this.favoritesService.getFavorites();
   }
 
-  removeFavorite(id: number): void {
+  public removeFavorite(id: number): void {
     this.favorites = this.favoritesService.removeFavorite(id);
   }
 }

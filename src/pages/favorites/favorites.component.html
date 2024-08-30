@@ -2,13 +2,8 @@
 
 <div class="list-container container">
   <ng-container *ngIf="!loading; else loadingTemplate">
-    <app-favorite-card
-      *ngFor="let favorite of favorites"
-      [favoriteHero]="favorite"
-      (removeFavorite)="removeFavorite($event)"
-    ></app-favorite-card>
+    <app-favorite-card *ngFor="let favorite of favorites" [favoriteHero]="favorite"
+      (removeFavorite)="removeFavorite($event)"></app-favorite-card>
   </ng-container>
-  <ng-template #loadingTemplate
-    ><app-spinner class="loading-spinner"></app-spinner
-  ></ng-template>
+  <ng-template #loadingTemplate><app-spinner class="loading-spinner"></app-spinner></ng-template>
 </div>

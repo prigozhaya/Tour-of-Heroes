@@ -6,10 +6,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './hero-search.component.scss',
 })
 export class HeroSearchComponent {
-  searchValue = '';
-
   @Output() onEnter = new EventEmitter<string>();
-  setSearchValue() {
+
+  public searchValue = '';
+
+  public setSearchValue() {
     this.onEnter.emit(this.searchValue.trim());
   }
 }

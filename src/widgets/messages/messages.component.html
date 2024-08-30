@@ -6,15 +6,11 @@
   </div>
 
   <div class="container messages">
-    <div class="messages-container" *ngIf="messageService.messages.length">
-      <button type="button" (click)="messageService.clear()">Clear</button>
+    <div class="messages-container" *ngIf="messages |async">
+      <button type="button" (click)="clearMessages()">Clear</button>
 
       <div class="messages-box">
-        <p
-          class="message-text"
-          *ngFor="let message of messageService.messages"
-          [ngClass]="{ error: message.error }"
-        >
+        <p class="message-text" *ngFor="let message of messages |async" [ngClass]="{ error: message.error }">
           {{ message.text }}
         </p>
       </div>

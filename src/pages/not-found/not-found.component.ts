@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../../shared/services/messages/message.service';
+import { MessageService } from '@shared/services/messages/message.service';
 
 @Component({
   selector: 'app-not-found',
@@ -7,11 +7,11 @@ import { MessageService } from '../../shared/services/messages/message.service';
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent implements OnInit {
+  public link = "/dashboard"
+
   constructor(
     private messageService: MessageService
   ) { }
-
-  link = "/dashboard"
 
   ngOnInit(): void {
     this.messageService.add({ text: `Page not found`, error: true });

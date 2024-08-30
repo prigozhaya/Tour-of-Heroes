@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Hero } from '../../../../shared/model/hero';
+import { Hero } from '@shared/model';
 
 @Component({
-  selector: 'app-hero-card',
-  templateUrl: './hero-card.component.html',
-  styleUrl: './hero-card.component.scss',
+  selector: 'app-detail-card',
+  templateUrl: './detail-card.component.html',
+  styleUrl: './detail-card.component.scss'
 })
-export class HeroCardComponent {
+export class DetailCardComponent {
   @Input() hero: Hero = {};
   @Output() setFavorite = new EventEmitter<Hero>();
   @Output() removeFavorite = new EventEmitter<number>();
@@ -20,4 +20,5 @@ export class HeroCardComponent {
       this.setFavorite.emit(this.hero);
     }
   }
+
 }

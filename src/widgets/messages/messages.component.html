@@ -1,0 +1,20 @@
+<div class="messages-block container">
+  <div class="message-header-container">
+    <span class="messages-container-line"></span>
+    <h2 class="messages-header">Messages</h2>
+    <span class="messages-container-line"></span>
+  </div>
+
+  <div class="container messages">
+    <div class="messages-container" *ngIf="messages |async">
+      <button type="button" (click)="clearMessages()">Clear</button>
+
+      <div class="messages-box">
+        <p class="message-text" *ngFor="let message of messages |async" [ngClass]="{ error: message.error }">
+          {{ message.text }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <span class="messages-container-line"></span>
+</div>

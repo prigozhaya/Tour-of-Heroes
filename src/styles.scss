@@ -1,46 +1,98 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}
+@use "./colors.scss";
+
 body {
-  margin: 2em;
+  background-color: colors.$background;
+  background-image: url("../public/Back-ground-dots.png");
+  background-repeat: repeat-x;
+  background-position-y: 100px;
+  margin: 0;
 }
-body, input[type="text"], button {
-  color: #333;
-  font-family: Cambria, Georgia, serif;
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 button {
-  background-color: #eee;
-  border: none;
-  border-radius: 4px;
+  display: flex;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-family: "Kufam", sans-serif;
+  font-size: 20px;
+  color: #fff;
+  background: colors.$blue;
+  transition: 1s;
+  box-shadow: 3px 3px 0 colors.$black;
   cursor: pointer;
-  color: black;
-  font-size: 1.2rem;
-  padding: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+
+  &:focus {
+    outline: none;
+  }
 
   &:hover {
-    background-color: black;
-    color: white;
+    transition: 0.5s;
+    box-shadow: 5px 5px 0 colors.$yellow;
   }
-
-  &:disabled {
-    background-color: #eee;
-    color: #aaa;
-    cursor: auto;
-  }
-
 }
 
+.heroes-header {
+  text-align: center;
+  -webkit-text-stroke: 3px colors.$black;
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 colors.$black;
+  color: colors.$red;
+  font-size: 35px;
+  font-family: "Lalezar", system-ui;
+}
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
+.list-container {
+  border: 5px solid colors.$black;
+  width: 720px;
+  min-height: 500px;
+  box-shadow: 10px 10px 0 0 colors.$black;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  row-gap: 30px;
+  justify-content: space-between;
+  padding: 50px 32px 15px 32px;
+  margin-bottom: 70px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: colors.$yellow;
+  height: fit-content;
+  padding: 15px;
+  max-width: 320px;
+  border: 3px solid colors.$black;
+  font-family: "Kufam", sans-serif;
+}
+
+.loading-spinner {
+  width: 100%;
+}
+
+.loading {
+  display: none;
+}
+
+.info-text-text {
+  font-weight: 700;
+}
+
+.info-text-name {
+  color: colors.$red;
+  -webkit-text-stroke: 3px colors.$black;
+  paint-order: stroke fill;
 }

@@ -1,41 +1,37 @@
+import { NgFor, NgIf } from '@angular/common';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { DashboardModule } from '../pages/dashboard/dashboard.module';
+import { FavoritesModule } from '../pages/favorites/favorites.module';
+import { NotFoundModule } from '../pages/not-found/not-found.module';
+import { FooterModule } from "../widgets/footer/footer.module";
+import { HeaderModule } from "../widgets/header/header.module";
+import { MessagesModule } from "../widgets/messages/messages.module";
+import { HeroDetailModule } from './../pages/hero-detail/hero-detail.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
-    DashboardComponent,
-    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     NgFor,
-    NgIf
+    NgIf,
+    DashboardModule,
+    HeroDetailModule,
+    FavoritesModule,
+    NotFoundModule,
+    HeaderModule,
+    MessagesModule,
+    FooterModule,
   ],
-  providers: [
-    provideClientHydration()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration(), provideHttpClient(withFetch())],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,0 +1,33 @@
+<h2 class="heroes-header">Hero Details</h2>
+<div class="list-container container">
+  <ng-container *ngIf="!loading; else loadingTemplate"></ng-container>
+  <ng-template #loadingTemplate><app-spinner class="loading-spinner"
+      [ngClass]="{ loading: !loading }"></app-spinner></ng-template>
+
+  <ng-container *ngIf="hero$ | async as hero">
+    <div class="hero-info-container">
+
+      <app-detail-card [hero]="hero" (setFavorite)="setFavorite($event)"
+        (removeFavorite)="removeFavorite($event)"></app-detail-card>
+      <div class="info-container">
+        <h3 class="info-text-name">{{ hero.name | uppercase }}</h3>
+        <p><span class="info-text-text">ID:</span> {{ hero.id }}</p>
+        <p>
+          <span class="info-text-text">Description:</span>
+          {{ hero.description }}
+        </p>
+        <div>
+          <p><span class="info-text-text">Appearance:</span></p>
+          <ul>
+            <li *ngFor="let item of hero.comics?.items">{{ item.name }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+<div class="container">
+  <button type="button" (click)="goBack()">Go back</button>
+</div>

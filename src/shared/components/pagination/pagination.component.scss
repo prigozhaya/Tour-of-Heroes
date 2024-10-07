@@ -1,0 +1,20 @@
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+
+  .pagination-button {
+    cursor: pointer;
+    display: inline;
+
+    &.disable {
+      cursor: default;
+
+      & path {
+        fill: #3333337b;
+      }
+    }
+  }
+}

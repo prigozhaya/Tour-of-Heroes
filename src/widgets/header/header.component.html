@@ -1,0 +1,8 @@
+<header class="header-wrapper">
+  <nav class="container navigation">
+    <h1>{{ title }}</h1>
+    <div class="navigation-links">
+      <a *ngFor="let link of links" routerLink="{{link.path}}">{{ link.linkName }}</a>
+    </div>
+  </nav>
+</header>

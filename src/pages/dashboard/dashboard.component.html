@@ -1,0 +1,14 @@
+<app-hero-search (onEnter)="setSearchValue($event)"></app-hero-search>
+<h2 class="heroes-header">Heroes</h2>
+<div class="list-container container">
+  <ng-container *ngIf="heroes$ | async as heroes">
+    <app-hero-card *ngFor="let hero of heroes" [hero]="hero" (setFavorite)="setFavorite($event)"
+      (removeFavorite)="removeFavorite($event)"></app-hero-card>
+  </ng-container>
+  <ng-container *ngIf="!loading; else loadingTemplate"></ng-container>
+  <ng-template #loadingTemplate>
+    <app-spinner class="loading-spinner" [ngClass]="{ loading: !loading }"></app-spinner>
+  </ng-template>
+  <div class="list-page" [ngClass]="{ loading: loading }">{{ page }}</div>
+</div>
+<app-pagination (onClick)="setPage($event)" [maxPage]="maxPage" [page]="page"></app-pagination>
